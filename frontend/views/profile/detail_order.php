@@ -129,9 +129,10 @@ use yii\widgets\ActiveForm;
                 <br>
 
                 <?php
+                if($TbKonfimasiPembayaran){
                     if($TbKonfimasiPembayaran->konfirmasiMedia){ ?>
                         <img  width = 100% src="<?='../../backend/web/uploads/'.$TbKonfimasiPembayaran->konfirmasiMedia->name.$TbKonfimasiPembayaran->konfirmasiMedia->type?>" alt="IMG-BENNER">
-                   <?php  }
+                   <?php  } }
                 ?>
                 
                 <br><br>

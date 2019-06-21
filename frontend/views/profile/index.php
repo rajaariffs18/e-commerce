@@ -33,8 +33,8 @@ use yii\helpers\Url;
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>No. Transaksi</th>
-                    <th>Kirim Ke</th>
+                    <th>No. Pesanan</th>
+                    <th>Nama Penerima</th>
                     <th>Total Pembelian</th>
                     <th>Status</th>
                     <th>Detail</th>

@@ -105,7 +105,7 @@ $this->registerJsFile(
 			<div class="col-md-4">
 				<div class="bo9 w-size18 p-l-10 p-r-10 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
 					<h5 class="m-text15 p-b-4">
-						Metode Pemayaran
+						Metode Pembayaran
 					</h5>
 					<hr>
 

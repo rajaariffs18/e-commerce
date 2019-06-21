@@ -41,7 +41,7 @@ class TbTransaksiData extends \yii\db\ActiveRecord
     {
         return [
             [['id_transaksi', 'nama_depan', 'nama_belakang', 'kode_pos', 'no_telp', 'metode_pembayaran', 'estimasi_pengiriman', 'ongkos_kirim', 'kd_atm', 'provinsi', 'kab_kota', 'alamat', 'total_pembayaran'], 'required'],
-            [['id_transaksi', 'nama_depan', 'nama_belakang', 'kode_pos', 'no_telp', 'metode_pembayaran', 'estimasi_pengiriman', 'ongkos_kirim', 'kd_atm', 'status', 'total_pembayaran'], 'integer'],
+            [['id_transaksi', 'nama_depan', 'nama_belakang', 'kode_pos', 'no_telp', 'metode_pembayaran', 'estimasi_pengiriman', 'ongkos_kirim', 'kd_atm', 'status', 'total_pembayaran'], 'safe'],
             [['provinsi', 'kab_kota'], 'string', 'max' => 255],
             [['alamat'], 'string', 'max' => 355],
             [['id_transaksi'], 'unique'],

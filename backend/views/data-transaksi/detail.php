@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 Metode Pembayaran
                             </h5>
                             <hr>
-                            <p>Transfer Melalui  <?= $TbTransaksiData->rekening->nama_atm ?> <br> No. Rek. <?= $TbTransaksiData->rekening->no_rek ?> </p>
+                            <p>Transfer Melalui  <?= ($TbTransaksiData->rekening) ? $TbTransaksiData->rekening->nama_atm : '' ?> <br> No. Rek. <?= $TbTransaksiData->rekening->no_rek ?> </p>
                         </div>
                     </div>
 
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         <?php foreach ($model as $data) { ?>
                             <tr>
-                                <td><?= $data->produk->nama_barang ?></td>
+                                <td><?= ($data->produk) ? $data->produk->nama_barang : '-' ?></td>
                                 <td><?= $data->qty ?></td>
                                 <td><?=  'Rp '.number_format($data->total_harga,2,",",".") ?></td>
                             </tr>
