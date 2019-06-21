@@ -1,0 +1,37 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteBase /
+
+# ============================================================================== #
+# untuk Backend
+RewriteCond %{REQUEST_URI} ^/(admin)
+RewriteRule ^admin/vendor/(.*)$ backend/web/vendor/$1 [L]
+RewriteRule ^admin/assets/(.*)$ backend/web/assets/$1 [L]
+RewriteRule ^admin/css/(.*)$ backend/web/css/$1 [L]
+RewriteRule ^admin/js/(.*)$ backend/web/js/$1 [L]
+RewriteRule ^admin/data/(.*)$ backend/web/data/$1 [L]
+RewriteRule ^admin/dist/(.*)$ backend/web/dist/$1 [L]
+RewriteRule ^admin/uploads/(.*)$ backend/web/uploads/$1 [L]
+
+# ========Jika tidak memenuhi kondisi di atas, maka arahkan ke index.php======== #
+RewriteCond %{REQUEST_URI} !^/backend/web/(vendor|assets|css|js|data|dist|uploads)/
+RewriteCond %{REQUEST_URI} ^/(admin)
+RewriteRule ^.*$ backend/web/index.php [L]
+# ============================================================================== #
+# ============================================================================== #
+
+RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
+RewriteRule ^css/(.*)$ frontend/web/css/$1 [L]
+RewriteRule ^template/(.*)$ frontend/web/template/$1 [L]
+RewriteRule ^uplaods/(.*)$ frontend/web/uplaods/$1 [L]
+
+# ========Jika tidak memenuhi kondisi di atas, maka arahkan ke index.php======== #
+RewriteCond %{REQUEST_URI} !^/(backend|frontend)/web/(js|assets|css|js|data|dist|uploads|vendor|template)/
+RewriteCond %{REQUEST_URI} !index.php
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ frontend/web/index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^.*$ /frontend/web/index.php [NC,L]
+
+# ============================================================================== #
