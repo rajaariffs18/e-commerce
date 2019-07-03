@@ -25,6 +25,21 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'harga_barang')->textInput() ?>
 
+    <?php
+        if($action == "ubah"){
+            $no = 1;
+            foreach($model->getKdSurat()->all() as $data){ ?>
+            <!-- <hr> -->   
+                <h4>Daftar Lampiran :</h4>
+                
+                <div class="col-md-3">
+                    <div class="img-view"> <img style="width:100%; margin-top:9px; margin-bottom:9px" src="<?= Yii::getAlias('@web').'/uploads/'.$data->nama.$data->type ?>" alt=""></div>
+                    <a href="<?=Url::to(['surat-usulan/hapus-lampiran', 'id' => $model->id_surat, 'im' => $data->id])?>" class="btn btn-danger btn-block">Hapus</a>
+                </div>
+            
+        <?php   $no++; }
+        }
+    ?>
 
     <?php
         echo FileInput::widget([
