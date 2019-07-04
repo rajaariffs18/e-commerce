@@ -15,7 +15,11 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'kategori')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?php 
+        echo $form->field($model, 'status')->dropDownList(
+            [1 => 'Aktif', 2 => 'Tidak Aktif']
+        ); 
+    ?>
 
     <?php
         echo FileInput::widget([

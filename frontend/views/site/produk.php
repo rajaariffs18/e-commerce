@@ -15,25 +15,12 @@ use yii\helpers\Url;
 						</h4>
 
 						<ul class="p-b-54">
-						<li >
-							<a href="<?= Url::to(['site/kategori','k' =>1]) ?>">Gamis</a>
-						</li>
+							<?php foreach($TbKategori as $kategori) { ?>
 
-						<li>
-							<a href="<?= Url::to(['site/kategori','k' =>2]) ?>">Khimar</a>
-						</li>
-
-						<li>
-							<a href="<?= Url::to(['site/kategori','k' =>3]) ?>">Outer</a>
-						</li>
-
-						<li>
-							<a href="<?= Url::to(['site/kategori','k' =>4]) ?>">Rok</a>
-						</li>
-
-						<li>
-							<a href="<?= Url::to(['site/kategori','k' =>5]) ?>">Set Syari</a>
-						</li>
+								<li>
+									<a href="<?= Url::to(['site/kategori','k' =>$kategori->id]) ?>"><?= $kategori->kategori ?></a>
+								</li>
+							<?php } ?>
 						</ul>
 
 						

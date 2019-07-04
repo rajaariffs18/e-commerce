@@ -95,7 +95,9 @@ class SiteController extends Controller
     public function actionKategori($k)
     {
         $model = TbProduk::find()->where(['kd_kategori' => $k])->all();
-        return $this->render('produk', ['model' => $model]);
+        $TbKategori = TbKategori::find()->all();
+
+        return $this->render('produk', ['model' => $model, 'TbKategori' => $TbKategori]);
     } 
 
     /**

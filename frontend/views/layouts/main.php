@@ -11,13 +11,15 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use common\models\TbTransaksiBarang;
+use common\models\TbKategori;
 
 AppAsset::register($this);
 
 $user_id = Yii::$app->user->id;
 
-$jumlahData = TbTransaksiBarang::find()->where(['id_user' => $user_id, 'status_transaksi' => 1])->count()
+$jumlahData = TbTransaksiBarang::find()->where(['id_user' => $user_id, 'status_transaksi' => 1])->count();
 
+$TbKategori = TbKategori::find()->all();
 
 ?>
 <?php $this->beginPage() ?>
@@ -72,25 +74,15 @@ $jumlahData = TbTransaksiBarang::find()->where(['id_user' => $user_id, 'status_t
 					<a href="<?= Url::to(['site/kategori','k' =>1]) ?>">Terbaru</a>
 				</li> -->
 
-				<li >
-					<a href="<?= Url::to(['site/kategori','k' =>1]) ?>">Gamis</a>
-				</li>
+				
+
+				<?php foreach($TbKategori as $kategori) { ?>
 
 				<li>
-					<a href="<?= Url::to(['site/kategori','k' =>2]) ?>">Khimar</a>
+					<a href="<?= Url::to(['site/kategori','k' =>$kategori->id]) ?>"><?= $kategori->kategori ?></a>
 				</li>
 
-				<li>
-					<a href="<?= Url::to(['site/kategori','k' =>3]) ?>">Outer</a>
-				</li>
-
-				<li>
-					<a href="<?= Url::to(['site/kategori','k' =>4]) ?>">Rok</a>
-				</li>
-
-				<li>
-					<a href="<?= Url::to(['site/kategori','k' =>5]) ?>">Set Syari</a>
-				</li>
+				<?php } ?>
 				<li>
 					<a href="<?= Url::to(['site/kategori','k' =>5]) ?>"></a>
 				</li>
@@ -238,6 +230,7 @@ $jumlahData = TbTransaksiBarang::find()->where(['id_user' => $user_id, 'status_t
 				<div class="wrap_menu">
 					<nav class="menu">
 						<ul class="main_menu">
+
 							<li>
 								<a href="<?= Url::to(['/']) ?>">Home</a>
 								<!-- <ul class="sub_menu">
@@ -247,29 +240,15 @@ $jumlahData = TbTransaksiBarang::find()->where(['id_user' => $user_id, 'status_t
 								</ul> -->
 							</li>
 
-							<li>
-								<a href="<?= Url::to(['site/kategori','k' =>1]) ?>">Terbaru</a>
-							</li>
+							<?php foreach($TbKategori as $kategori) { ?>
 
-							<!-- <li class="sale-noti"> -->
-								<a href="<?= Url::to(['site/kategori','k' =>1]) ?>">Gamis</a>
-							<!-- </li> -->
+								<li>
+									<a href="<?= Url::to(['site/kategori','k' =>$kategori->id]) ?>"><?= $kategori->kategori ?></a>
+								</li>
 
-							<li>
-								<a href="<?= Url::to(['site/kategori','k' =>2]) ?>">Khimar</a>
-							</li>
+							<?php } ?>
 
-							<li>
-								<a href="<?= Url::to(['site/kategori','k' =>3]) ?>">Outer</a>
-							</li>
 
-							<li>
-								<a href="<?= Url::to(['site/kategori','k' =>4]) ?>">Rok</a>
-							</li>
-
-							<li>
-								<a href="<?= Url::to(['site/kategori','k' =>5]) ?>">Set Syari</a>
-							</li>
 						</ul>
 					</nav>
 				</div>

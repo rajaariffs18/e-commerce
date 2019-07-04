@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\TbKategori;
+use common\models\TbKategoriMedia;
 use backend\models\KategoriSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -91,10 +92,22 @@ class KategoriController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
+            
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
-            if($model->upload()){
-                return $this->redirect(['index']);
+
+            // echo $model->imageFile; die();
+            if($model->imageFile != ""){
+                $TbKategoriMedia = TbKategoriMedia::find()->where(['id_produk' => $id])->one();
+                $TbKategoriMedia->delete();
+                if($model->upload()){
+                    return $this->redirect(['index']);
+                }
             }
+
+            return $this->redirect(['index']);
+
+
+            
         }
 
         return $this->render('update', [
