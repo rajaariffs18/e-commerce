@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{detail}',
                 'buttons' => [
                     "detail" => function ($url, $model, $key) {
-                        return Html::a('Detail', ['detail', 
+                        return Html::a('Detail', ['data-transaksi/detail', 
                             'id' => $model->no_pesanan
                         ],
                         ['class'=>'btn btn-primary btn-block','data-pjax'=>'0']);

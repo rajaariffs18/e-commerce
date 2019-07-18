@@ -46,11 +46,117 @@ $TbKategori = TbKategori::find()->all();
 	</script>
 	<!--End of Tawk.to Script-->
 </head>
-<body >
+<body class="animsition">
 <?php $this->beginBody() ?>
 
 
+	<!-- header fixed -->
+	<div class="wrap_header fixed-header2 trans-0-4">
+		<!-- Logo -->
+		<a href="<?= Url::to(['site/index']) ?>" class="logo">
+			<img src="<?= Yii::getAlias("@web")."/template/images/logo.png" ?>" alt="IMG-LOGO">
+		</a>
 
+		<!-- Menu -->
+		<div class="wrap_menu">
+			<nav class="menu">
+				<ul class="main_menu">
+				<li>
+					<a href="<?= Url::to(['/']) ?>">Home</a>
+					<!-- <ul class="sub_menu">
+						<li><a href="index.html">Homepage V1</a></li>
+						<li><a href="home-02.html">Homepage V2</a></li>
+						<li><a href="home-03.html">Homepage V3</a></li>
+					</ul> -->
+				</li>
+
+				<!-- <li>
+					<a href="<?= Url::to(['site/kategori','k' =>1]) ?>">Terbaru</a>
+				</li> -->
+
+				
+
+				<?php foreach($TbKategori as $kategori) { ?>
+
+				<li>
+					<a href="<?= Url::to(['site/kategori','k' =>$kategori->id]) ?>"><?= $kategori->kategori ?></a>
+				</li>
+
+				<?php } ?>
+				<li>
+					<a href="<?= Url::to(['site/kategori','k' =>5]) ?>"></a>
+				</li>
+				<li>
+					<a href="<?= Url::to(['site/kategori','k' =>5]) ?>"></a>
+				</li>
+				</ul>
+			</nav>
+		</div>
+
+		<!-- Header Icon -->
+		<div class="header-icons">
+			<!-- <a href="#" class="header-wrapicon1 dis-block">
+				<img src="template/images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+			</a>
+
+			<span class="linedivide1"></span> -->
+
+			<!-- <div class="header-wrapicon2"> -->
+				<?php if (Yii::$app->user->isGuest) { ?>
+					<a href="<?= Url::to(['login'])?>" class="m-r-6">
+						Login
+					</a>
+					<a href="<?= Url::to(['signup'])?>">
+						Register
+					</a>
+				<?php }else{ ?>
+					<a href="<?= Url::to(['konfirmasi-pembayaran/create']) ?>" class="header-wrapicon1 dis-block m-l-30 m-r-30">
+						Konfirmasi Pembayaran
+					</a>
+					<div class="header-cart header-dropdown">
+							<div class="header-cart-buttons">
+								<div class="header-cart-wrapbtn">
+									<!-- Button -->
+									<?= Html::a('<i class="fas fas-lock"></i> Logout', Url::to(['site/logout']), ['data-method' => 'POST', 'class' => 'flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-12']) ?>									
+								</div>
+							</div>
+						</div>
+					<div class="header-wrapicon2">
+						<!-- <img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON"> -->
+						<span class="header-icon1 js-show-header-dropdown"><?=  (Yii::$app->user->identity) ? Yii::$app->user->identity->username : '' ?></span>
+
+						<!-- Header cart noti -->
+						<div class="header-cart header-dropdown">
+							<div class="header-cart-buttons">
+								<div class="header-cart-wrapbtn">
+									<!-- Button -->
+									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-12">
+										Logout
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--  -->
+					<a href="<?= Url::to(['profile/index']) ?>" class="header-wrapicon1 dis-block m-l-30">
+						<img src="<?= Yii::getAlias("@web")."/template/images/icons/icon-header-01.png" ?>" class="header-icon1" alt="ICON">
+					</a>
+
+					<span class="linedivide1"></span>
+
+					<div class="header-wrapicon2 m-r-13">
+						<a href="<?= Url::to(['transaksi-barang/index']) ?>">
+							<img src="<?= Yii::getAlias("@web")."/template/images/icons/icon-header-02.png" ?>" class="header-icon1 js-show-header-dropdown" alt="ICON">
+							<span class="header-icons-noti"><?= $jumlahData ?></span>
+						</a>
+
+						<!-- Header cart noti -->
+						
+					</div>
+				<?php } ?>
+			<!-- </div> -->
+		</div>
+	</div>
 
 	<!-- Header -->
 	<header class="header2">

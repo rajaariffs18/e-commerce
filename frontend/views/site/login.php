@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-login">
     <!-- <h1><?= Html::encode($this->title) ?></h1> -->
 
-    <p class='text-center'>Silahkan Masukkna Username Dan password Anda</p>
+    <p class='text-center'>Silahkan Masukkan Username Dan Password Anda</p>
     <hr>
 
     <div class="row justify-content-center">

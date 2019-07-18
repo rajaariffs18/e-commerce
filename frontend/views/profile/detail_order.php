@@ -20,13 +20,13 @@ use yii\widgets\ActiveForm;
                 </div>
             </div>
             <hr>
-        <ul>
+       <!--  <ul>
 
             <li><a href="<?= Url::to(['index'])?>">Panel Akun Kontrol</a></li>            
             <li><a href="#">Informasi Akun</a></li>
             <li><a href="#">Pesanan Saya</a></li>
         
-        </ul>
+        </ul> -->
         </div>
         <div class="col-md-8 bo9">
             <br>

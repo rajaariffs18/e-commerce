@@ -7,27 +7,9 @@ use yii\helpers\Url;
 <section class="bgwhite p-t-55 p-b-65">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-					<div class="leftbar p-r-20 p-r-0-sm">
-						<!--  -->
-						<h4 class="m-text14 p-b-7">
-							Kategori
-						</h4>
+			
 
-						<ul class="p-b-54">
-							<?php foreach($TbKategori as $kategori) { ?>
-
-								<li>
-									<a href="<?= Url::to(['site/kategori','k' =>$kategori->id]) ?>"><?= $kategori->kategori ?></a>
-								</li>
-							<?php } ?>
-						</ul>
-
-						
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
+				<div class="col-sm-12 col-md-12 col-lg-12 p-b-50">
 					
 
 					<!-- Product -->
@@ -69,12 +51,6 @@ use yii\helpers\Url;
 
                         <?php } ?>
 
-					</div>
-
-					<!-- Pagination -->
-					<div class="pagination flex-m flex-w p-t-26">
-						<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-						<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
 					</div>
 				</div>
 			</div>

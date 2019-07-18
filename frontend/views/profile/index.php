@@ -16,13 +16,13 @@ use yii\helpers\Url;
                 </div>
             </div>
             <hr>
-        <ul>
+        <!-- <ul>
 
             <li><a href="<?= Url::to(['index'])?>">Panel Akun Kontrol</a></li>
             <li><a href="#">Informasi Akun</a></li>
             <li><a href="#">Pesanan Saya</a></li>
         
-        </ul>
+        </ul> -->
         </div>
         <div class="col-md-9">
             <h4>Hai <?= Yii::$app->user->identity->username ?></h4>
@@ -49,18 +49,17 @@ use yii\helpers\Url;
                         <td><?=  $data->total_pembayaran ?></td>
                         <td><?php 
                         
-                                if($TbTransaksiData->status == 1){
+                                if($data->status == 1){
                                     echo 'Sudah Konfirmasi Pembayaran';
-                                }else if($TbTransaksiData->status == 2){
+                                }else if($data->status == 2){
                                     echo 'Di Proses';
-                                }else if($TbTransaksiData->status == 3){
+                                }else if($data->status == 3){
                                     echo 'Sudah Dikirim';
-                                }else if($TbTransaksiData->status == 4){
+                                }else if($data->status == 4){
                                     echo 'Sudah Diterima';
                                 }else{
                                     echo 'Belum Konfirmasi Pembayaran';
                                 }
-
                             ?>
                             
                         </td>
