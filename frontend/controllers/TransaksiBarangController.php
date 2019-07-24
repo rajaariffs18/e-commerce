@@ -158,14 +158,28 @@ class TransaksiBarangController extends Controller
         $RefProvinsi = ArrayHelper::map(RefProvinsi::find()->all(),'Kd_Prov','Nm_Prov');
         $RefKabupaten = [];
         $kurir = [];
-        // return $jumlahBelanja;
-        // $model = TbTransaksiBarang::find()->all();
+
+        // var_dump($modelData); die();
 
         if ($modelData->load(Yii::$app->request->post()) && $modelTransaksiData->load(Yii::$app->request->post()) && $modelData->validate(false) && $modelTransaksiData->validate(false)) {
             $atm = $request->post('atm');
 
             // foreach($modelData as $data){
                 // $modelData->status_transaksi = 3;
+
+                $TbTransaksiBarang = TbTransaksiBarang::find()->where([
+                    'id_user' => $user_id, 'status_transaksi' => 2, 'id_transaksi' => $p
+                ])->all();
+
+                foreach($TbTransaksiBarang as $data){
+                    $tbProduk = TbProduk::find()->where([
+                        'id' => $data->id_barang
+                    ])->one();
+
+                    $tbProduk->stok = $tbProduk->stok - $data->qty;
+
+                    $tbProduk->save(false);
+                }
 
                 TbTransaksiBarang::updateAll([
                     'status_transaksi' => 3

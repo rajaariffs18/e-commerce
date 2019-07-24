@@ -48,10 +48,21 @@ $this->title = 'Detail Produk';
 					<?= $model->nama_barang ?>
 				</h4>
 
+				<h6>
+					Stok : <?php 
+						if($model->stok == 0){ ?>
+							<span style="color: red">Stok Habis</span>
+						<?php }else{
+							echo $model->stok;
+						}
+					?>
+				</h6>
+
 				<span class="m-text17">
                     <?= 'Rp '.number_format($model->harga_barang,2,",",".") ?>
 				</span>
 
+				
 				<p class="s-text8 p-t-10">
 					<?= $model->deskripsi ?>
 				</p>
@@ -59,22 +70,25 @@ $this->title = 'Detail Produk';
 					<div class="flex-r-m flex-w p-t-10">
 
 							<?php $form = ActiveForm::begin(['action' => Url::to(['transaksi-barang/add-cart', 'id' => $id])]); ?>
-								<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
-									<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-								</button>
-									<input class="size8 m-text18 t-center num-product" type="number" name="num-product" value="1">
-								<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
-									<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-								</button>
-								<div class="form-group">
-									<label for="comment">Catatan:</label>
-									<textarea class="form-control" rows="5" id="comment" name="catatan" placeholder="Isi dengan Warna, Ukuran dan Lain-lain"></textarea>
-								</div>
+								<?php if($model->stok != 0){ ?>
+									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
+										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+									</button>
+										<input class="size8 m-text18 t-center num-product" type="number" name="num-product" value="1">
+									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
+										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+									</button>
+									<div class="form-group">
+										<label for="comment">Catatan:</label>
+										<textarea class="form-control" rows="5" id="comment" name="catatan" placeholder="Isi dengan Warna, Ukuran dan Lain-lain"></textarea>
+									</div>
 
 
-								<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10" style="color:white">	
-									<?= Html::submitButton('Add to Cart', ['class' => 'lex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4']) ?>
-								</div>
+									<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10" style="color:white">	
+										<?= Html::submitButton('Add to Cart', ['class' => 'lex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4']) ?>
+									</div>
+								<?php } ?>
+								
 
 							<?php ActiveForm::end(); ?>
 
