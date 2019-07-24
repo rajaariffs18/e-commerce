@@ -75,6 +75,11 @@ class TbProduk extends \yii\db\ActiveRecord
         return $this->hasMany(TbProdukMedia::className(), ['id_produk' => 'id']);
     }
 
+    public function getKategori()
+    {
+        return $this->hasOne(TbKategori::className(), ['id' => 'kd_kategori']);
+    }
+
     /**
      * {@inheritdoc}
      */

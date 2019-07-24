@@ -24,10 +24,23 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             
+            
+            [
+                'header' => 'Kategori',
+                'value' => function($model){
+                    return ($model->kategori) ? $model->kategori->kategori : '-';
+                    // return $model->kd_kategori;
+                }
+            ],
             'nama_barang',
             'deskripsi:ntext',
             'stok',
-            'harga_barang',
+            [
+                'header' => 'Harga Barang',
+                'value' => function($model){
+                    return number_format($model->harga_barang,2,",",".");
+                }
+            ],
             //'tanggal_upload',
             //'kd_kategori',
 
