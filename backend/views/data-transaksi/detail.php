@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="tb-transaksi-barang-index">
 
         <div class="row justify-content-center">
+    
             <div class="col-md-8">
                 <br>
                 <h3>Detail Transaksi No. <?=  $TbTransaksiData->id_transaksi ?></h3><hr>
@@ -119,7 +120,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <br>
 
                 <?php
-                    if($TbKonfimasiPembayaran->konfirmasiMedia){ ?>
+                    if($TbKonfimasiPembayaran){ ?>
                         <img  width = 100% src="<?='../../backend/web/uploads/'.$TbKonfimasiPembayaran->konfirmasiMedia->name.$TbKonfimasiPembayaran->konfirmasiMedia->type?>" alt="IMG-BENNER">
                    <?php  }
                 ?>

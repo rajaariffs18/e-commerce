@@ -14,6 +14,7 @@ $this->title = 'Detail Produk';
 
 	<!-- Product Detail -->
 	<div class="container bgwhite p-t-35 p-b-80">
+	
 		<div class="flex-w flex-sb">
 			<div class="w-size13 p-t-30 respon5">
 				<div class="wrap-slick3 flex-sb flex-w">
@@ -44,6 +45,12 @@ $this->title = 'Detail Produk';
 			</div>
 
 			<div class="w-size14 p-t-30 respon5">
+				<?php if (Yii::$app->session->hasFlash('warning')): ?>
+					<div class="alert alert-warning alert-dismissable">
+						<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+						<?= Yii::$app->session->getFlash('warning') ?>
+					</div>
+				<?php endif; ?>
 				<h4 class="product-detail-name m-text16 p-b-13">
 					<?= $model->nama_barang ?>
 				</h4>

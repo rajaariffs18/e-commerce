@@ -154,10 +154,17 @@ class TransaksiBarangController extends Controller
         // $modelData->id_user = $user_id;
 
         $jumlahBelanja = TbTransaksiBarang::find()->where(['id_user' => $user_id, 'status_transaksi' => 2, 'id_transaksi' => $p])->sum('total_harga');
-        $RefRekening = RefRekening::find()->all();
+        // $RefRekening = RefRekening::find()->all();
         $RefProvinsi = ArrayHelper::map(RefProvinsi::find()->all(),'Kd_Prov','Nm_Prov');
         $RefKabupaten = [];
         $kurir = [];
+
+        $RefRekening = ArrayHelper::map(RefRekening::find()->all(),'id', 
+            function($model){
+                return 'Pembayaran Melalui '.$model->nama_atm;
+            }
+        );
+
 
         // var_dump($modelData); die();
 
@@ -188,7 +195,7 @@ class TransaksiBarangController extends Controller
                 $modelData->save(false);
             // }
 
-            $modelTransaksiData->kd_atm = $atm;
+            // $modelTransaksiData->kd_atm = $atm;
             $modelTransaksiData->save(false);
             return $this->redirect(['detail-transaksi', 'p' =>  $p]);
         }else{
@@ -274,6 +281,13 @@ class TransaksiBarangController extends Controller
         $model->status_transaksi = 1;
         $modelProduk = TbProduk::find()->where(['id' => $id])->one();
 
+        if($modelProduk->stok < $qty){
+            Yii::$app->session->setFlash('warning', "Stok tidak mencukupi.");
+
+            return $this->redirect(['site/detail', 'id' => $id]);
+        }
+
+
         $model->total_harga = $modelProduk->harga_barang * $qty;
 
         $cekData = TbTransaksiBarang::find()->where(['id_user' => $user_id, 'status_transaksi' => 1])->exists();
@@ -287,7 +301,8 @@ class TransaksiBarangController extends Controller
                 $nomor = 1;
             }
 
-            $model->id_transaksi = substr(crc32($nomor), 4);
+            // $model->id_transaksi = substr(crc32($nomor), 4);
+            $model->id_transaksi = rand($nomor,1000000);
         }else{
             $data = TbTransaksiBarang::find()->where(['id_user' => $user_id, 'status_transaksi' => 1])->one();
 

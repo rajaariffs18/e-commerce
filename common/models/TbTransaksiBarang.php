@@ -55,6 +55,7 @@ class TbTransaksiBarang extends \yii\db\ActiveRecord
             'id_barang' => 'Id Barang',
             'qty' => 'Qty',
             'catatan' => 'Catatan',
+            'kd_city' => 'Kota',
             'total_harga' => 'Total Harga',
             'status_transaksi' => 'Status Transaksi',
         ];

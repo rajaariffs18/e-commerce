@@ -122,16 +122,9 @@ $this->registerJsFile(
 
 					<div class="flex-w flex-sb-m p-t-26 p-b-30">
 						<div class="form-group">
-						<?php
-						
-							foreach($RefRekening as $Rekening){
-								// echo $form->field($modelTransaksiData, 'kd_atm')->radio(['label' => 'Pembayaran Melalui '. $Rekening->nama_atm, 'value' => $Rekening->id, 'name'=>'atm']); ?>
-								<div class="col-md-12">
-									<input type="radio" id="form-control" name="atm" value=<?= $Rekening->id ?> style="margin-right: 15px">Pembayaran Melalui <?=$Rekening->nama_atm?>
-								</div>
-								<?php	}
-						
-						 ?>
+
+							<?= $form->field($modelTransaksiData, 'kd_atm')->radioList( $RefRekening)->label('Pilih Bank'); ?>
+
 						</div>
 					</div>
 				</div>
@@ -177,12 +170,12 @@ $this->registerJsFile(
 						</table>	
 					</div>
 
-					<div class="size15 trans-0-4">
+					<!-- <div class="size15 trans-0-4"> -->
 						<!-- Button -->
 						<div class="form-group">
-							<?= Html::submitButton('Proses', ['class' => 'flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4']) ?>
+							<?= Html::submitButton('Proses', ['class' => 'lex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4']) ?>
 						</div>
-					</div>
+					<!-- </div> -->
 				</div>
 			</div>
 			<?php ActiveForm::end(); ?>

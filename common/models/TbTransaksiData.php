@@ -40,7 +40,8 @@ class TbTransaksiData extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_transaksi', 'nama_depan', 'nama_belakang', 'kode_pos', 'no_telp', 'metode_pembayaran', 'estimasi_pengiriman', 'ongkos_kirim', 'kd_atm', 'provinsi', 'kab_kota', 'alamat', 'total_pembayaran'], 'required'],
+            // [['id_transaksi', 'nama_depan', 'nama_belakang', 'kode_pos', 'no_telp', 'metode_pembayaran', 'estimasi_pengiriman', 'ongkos_kirim', 'kd_atm', 'provinsi', 'kab_kota', 'alamat', 'total_pembayaran'], 'required'],
+            [['id_transaksi', 'nama_depan', 'nama_belakang', 'kode_pos', 'no_telp', 'metode_pembayaran', 'kd_atm', 'provinsi', 'kab_kota', 'alamat'], 'required'],
             [['id_transaksi', 'nama_depan', 'nama_belakang', 'kode_pos', 'no_telp', 'metode_pembayaran', 'estimasi_pengiriman', 'ongkos_kirim', 'kd_atm', 'status', 'total_pembayaran'], 'safe'],
             [['provinsi', 'kab_kota'], 'string', 'max' => 255],
             [['alamat'], 'string', 'max' => 355],
@@ -62,9 +63,9 @@ class TbTransaksiData extends \yii\db\ActiveRecord
             'metode_pembayaran' => 'Metode Pembayaran',
             'estimasi_pengiriman' => 'Estimasi Pengiriman',
             'ongkos_kirim' => 'Ongkos Kirim',
-            'kd_atm' => 'Kd Atm',
+            'kd_atm' => 'Atm',
             'provinsi' => 'Provinsi',
-            'kab_kota' => 'Kab Kota',
+            'kab_kota' => 'Kota',
             'alamat' => 'Alamat',
             'total_pembayaran' => 'Total Pembayaran',
         ];
