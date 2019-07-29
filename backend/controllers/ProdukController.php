@@ -105,8 +105,8 @@ class ProdukController extends Controller
         $TbKategori = ArrayHelper::map(TbKategori::find()->all(), 'id', 'kategori');
 
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [
