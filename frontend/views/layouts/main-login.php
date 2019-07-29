@@ -28,13 +28,6 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 
-	<!-- header fixed -->
-	<div class="wrap_header fixed-header2 trans-0-4">
-		<!-- Logo -->
-		<a href="index.html" class="logo">
-			<img src="<?= Yii::getAlias('@web'). 'template/images/logo.png' ?>" alt="IMG-LOGO" width=200>
-		</a>
-	</div>
 
 	<!-- Header -->
 	<header class="header2">
